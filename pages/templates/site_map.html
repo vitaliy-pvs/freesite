@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for page in pages %}
+<p><a href="{% url 'show_page' pk=page.pk %}">{{ page.title|safe }}</a></p>
+{% endfor %}
+{% endblock %}
