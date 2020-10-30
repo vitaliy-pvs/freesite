@@ -2,6 +2,6 @@
 
 {% block content %}
 {% for page in pages %}
-<p><a href="{% url 'show_page' pk=page.pk %}">{{ page.title|safe }}</a></p>
+<p><a href="{% url 'page_by_pk' pk=page.pk %}">{{ page.title|safe }}</a></p>
 {% endfor %}
 {% endblock %}
