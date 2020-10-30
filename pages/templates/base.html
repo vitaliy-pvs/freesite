@@ -68,18 +68,6 @@
 .body_pointer * {
 	cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
     <script>
 $(function() {
@@ -103,16 +91,6 @@ $(function() {
 		}
 	});
 });
-
-
-
-
-
-
-
-
-
-
     </script>
 </head>
 <body>
@@ -136,9 +114,9 @@ $(function() {
         <div class="menu-popup">
             <a class="menu-close" href="#"></a>
             <ul>
-                <li><a href="#">Оглавление</a></li>
-                <li><a href="#">Авторы курса</a></li>
-                <li><a href="#">Контакты</a></li>
+                {% for menu_page in menu_pages %}
+                <li><a href="{% url 'menu_page' pk=menu_page.pk %}">{{ menu_page.title|safe }}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>

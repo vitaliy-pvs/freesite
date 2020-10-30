@@ -6,7 +6,7 @@ from freesite import settings
 urlpatterns = [
                   path('', views.main_page, name='main_page'),
                   path('sitemap/', views.site_map, name='site_map'),
-                  path('<int:pk>/', views.page_by_pk, name='page_by_pk'),
+                  path('page/<int:pk>/', views.page, name='page'),
                   path('ckeditor/', include('ckeditor_uploader.urls')),
-                  path('<str:title>/', views.page_by_title, name='page_by_title'),
+                  path('menu/<int:pk>/', views.menu_page, name='menu_page'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

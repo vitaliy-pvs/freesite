@@ -8,3 +8,12 @@ class Page(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class MenuPage(models.Model):
+    number = models.IntegerField()
+    title = models.TextField()
+    content = RichTextUploadingField()
+
+    def __str__(self):
+        return self.title
