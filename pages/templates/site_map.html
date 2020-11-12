@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h3>КАРТА САЙТА</h3>
 {% for page in pages %}
 <p><a href="{% url 'page' pk=page.pk %}">{{ page.title|safe }}</a></p>
 {% endfor %}

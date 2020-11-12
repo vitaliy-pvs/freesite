@@ -17,3 +17,9 @@ class MenuPage(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Settings(models.Model):
+    site_title = models.TextField()
+    header_logo_url = models.TextField()
+    header_picture_url = models.TextField()
