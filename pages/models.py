@@ -21,5 +21,12 @@ class MenuPage(models.Model):
 
 class Settings(models.Model):
     site_title = models.TextField()
+    header_logo_visibility = models.TextField()
     header_logo_url = models.TextField()
     header_picture_url = models.TextField()
+    header_color = models.TextField()
+    menu_text_color = models.TextField()
+    page_color = models.TextField()
+    page_text_color = models.TextField()
+    main_page_name = models.TextField()
+    map_page_name = models.TextField()
