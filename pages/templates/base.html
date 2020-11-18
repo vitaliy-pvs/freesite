@@ -7,43 +7,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
     <link rel="stylesheet" href="{% static 'pages.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{{ settings.favicon }}">
 
 </head>
 
 <body>
 
 <div class="wrapper">
+
     <header class="header" style="
     background-color:{{ settings.header_color }};
     background-image:url({{ settings.header_picture_url }});
     background-repeat:no-repeat;
     background-size:cover;">
-        <div class="container">
-            <font face="Arial, sans-serif">
-                <div class="header__body">
-                    <a {{ settings.header_logo_visibility }} href="/" class="header__logo">
-                        <img src="{{ settings.header_logo_url }}" alt="logo">
-                    </a>
-                    <div class="header__burger">
-                        <span class="bef" style="background-color:{{ settings.menu_text_color }};"></span>
-                        <span class="mid" style="background-color:{{ settings.menu_text_color }};"></span>
-                        <span class="aft" style="background-color:{{ settings.menu_text_color }};"></span>
-                    </div>
-                    <nav id="header__menu" class="header__menu">
-                        <ul class="header__list">
-                            {% for menu_page in menu_pages %}
-                            <li>
-                                <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
-                                   style="color:{{ settings.menu_text_color }};">
-                                    {{ menu_page.title }}
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </nav>
+        <font face="Arial, sans-serif">
+            <div class="header__body">
+                <a href="/" class="header__logo">
+                    {% if settings.header_logo_url != "#" %}
+                    <img src="{{ settings.header_logo_url }}" alt="logo">
+                    {% endif %}
+                </a>
+                <div class="header__burger">
+                    <span class="bef" style="background-color:{{ settings.menu_text_color }};"></span>
+                    <span class="mid" style="background-color:{{ settings.menu_text_color }};"></span>
+                    <span class="aft" style="background-color:{{ settings.menu_text_color }};"></span>
                 </div>
-            </font>
-        </div>
+                <nav id="header__menu" class="header__menu">
+                    <ul class="header__list">
+                        {% for menu_page in menu_pages %}
+                        <li>
+                            <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
+                               style="color:{{ settings.menu_text_color }};">
+                                {{ menu_page.title }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </font>
     </header>
 
     <div class="content" style="background-color:{{ settings.page_color }};">
@@ -63,13 +65,17 @@
 <script>
 $(document).ready(function(){
     let header__menu = document.getElementById('header__menu');
+    let header_color = "{{ settings.header_color }}";
+    if (header_color == "#") {
+        header_color = "#A9A9A9";
+    }
     $('.header__burger').click(function(event){
         $('.header__burger, .header__menu, .bef, .mid, .aft').toggleClass('active');
         $('body').toggleClass('lock');
-        if (document.body.className == 'lock') {
-            header__menu.style.background = "{{ settings.header_color }}";
+        if (header__menu.classList.contains('active')) {
+            header__menu.style.background = header_color;
         } else {
-            header__menu.style.background = "rgba(0, 0, 0, 0)";
+            header__menu.style.background = "rgba(0, 0, 0, 0.1)";
         }
     });
 });
