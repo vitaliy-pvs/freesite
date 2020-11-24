@@ -58,7 +58,7 @@ html, body{
     z-index: 3;
 }
 .header__list li{
-    text-shadow: 1px 1px 2px black;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, .2);
     list-style: none;
     margin: 0px 0px 0px 20px;
 }
