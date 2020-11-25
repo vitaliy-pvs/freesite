@@ -20,10 +20,7 @@ class MenuPage(models.Model):
 
 
 class Settings(models.Model):
-    favicon = models.TextField()
     site_title = models.TextField()
-    header_logo_url = models.TextField()
-    header_picture_url = models.TextField()
     header_color = models.TextField()
     menu_text_color = models.TextField()
     page_color = models.TextField()

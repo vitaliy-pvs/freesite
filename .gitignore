@@ -5,3 +5,7 @@ db.sqlite3
 .DS_Store
 .idea/
 venv/
+pages/static/favicon.png
+pages/static/header.png
+pages/static/logo.png
+media/

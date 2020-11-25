@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
     <link rel="stylesheet" href="{% static 'pages.css' %}">
-    <link href="{{ settings.favicon }}" rel="icon" type="image/png" />
+    <link href="{{ favicon_path }}" rel="icon" type="image/png"/>
 </head>
 
 <body>
@@ -16,21 +16,21 @@
 
     <header class="header" style="
     background-color:{{ settings.header_color }};
-    background-image:url({{ settings.header_picture_url }});
+    background-image:url({{ header_path }});
     background-repeat:no-repeat;
     background-size:cover;">
         <font face="Arial, sans-serif">
             <div class="header__body">
                 <a href="/" class="header__logo">
-                    {% if settings.header_logo_url != "#" %}
-                    <img src="{{ settings.header_logo_url }}" alt="logo">
+                    {% if logo_path != "#" %}
+                    <img src="{{ logo_path }}" alt="logo">
                     {% endif %}
                 </a>
-                <div class="header__burger">
-                    <span class="bef" style="background-color:{{ settings.menu_text_color }};"></span>
-                    <span class="mid" style="background-color:{{ settings.menu_text_color }};"></span>
-                    <span class="aft" style="background-color:{{ settings.menu_text_color }};"></span>
-                </div>
+                <a href="#" class="header__burger">
+                    <div class="bef" style="background-color:{{ settings.menu_text_color }};"></div>
+                    <div class="mid" style="background-color:{{ settings.menu_text_color }};"></div>
+                    <div class="aft" style="background-color:{{ settings.menu_text_color }};"></div>
+                </a>
                 <nav id="header__menu" class="header__menu">
                     <ul class="header__list">
                         {% for menu_page in menu_pages %}
@@ -48,13 +48,12 @@
     </header>
 
     <div class="content" style="background-color:{{ settings.page_color }};">
-        <div class="container">
-            <font color="{{ settings.page_text_color }}" face="Arial, sans-serif">
+        <font color="{{ settings.page_text_color }}" face="Arial, sans-serif">
+            <div class="container">
                 {% block content %}
                 {% endblock %}
-            </font>
-
-        </div>
+            </div>
+        </font>
     </div>
 
 </div>
@@ -78,7 +77,6 @@ $(document).ready(function(){
         }
     });
 });
-
 </script>
 
 </body>
