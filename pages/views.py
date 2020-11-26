@@ -1,17 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Page, MenuPage, Settings
 import os.path
+from os import path
+
+PROJECT_PATH = path.realpath(path.dirname(__file__))
 
 favicon_path = "#"
-if os.path.isfile("pages/static/favicon.png"):
+if os.path.isfile(PROJECT_PATH + "/static/favicon.png"):
     favicon_path = "static/favicon.png"
 
 logo_path = "#"
-if os.path.isfile("pages/static/logo.png"):
+if os.path.isfile(PROJECT_PATH + "/static/logo.png"):
     logo_path = "static/logo.png"
 
 header_path = "#"
-if os.path.isfile("pages/static/header.png"):
+if os.path.isfile(PROJECT_PATH + "/static/header.png"):
     header_path = "static/header.png"
 
 
