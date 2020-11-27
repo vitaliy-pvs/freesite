@@ -1,6 +1,22 @@
+import os
+
 from django.shortcuts import render, get_object_or_404, redirect
 
+from freesite.settings import STATIC_ROOT
 from .models import Page, MenuPage, Settings
+
+
+favicon_path = "#"
+if os.path.isfile(os.path.join(STATIC_ROOT, 'favicon.png')):
+    favicon_path = "static/favicon.png"
+
+logo_exists = False
+if os.path.isfile(os.path.join(STATIC_ROOT, 'logo.png')):
+    logo_exists = True
+
+header_path = "#"
+if os.path.isfile(os.path.join(STATIC_ROOT, 'header.png')):
+    header_path = "static/header.png"
 
 
 def menu_page(request, pk):
@@ -14,7 +30,10 @@ def menu_page(request, pk):
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
         'page': page,
-        'settings': settings[0]
+        'settings': settings[0],
+        'favicon_path': favicon_path,
+        'logo_exists': logo_exists,
+        'header_path': header_path
     })
 
 
@@ -25,7 +44,10 @@ def page_list(request):
     return render(request, 'page_list.html', {
         'menu_pages': menu_pages,
         'pages': pages,
-        'settings': settings[0]
+        'settings': settings[0],
+        'favicon_path': favicon_path,
+        'logo_exists': logo_exists,
+        'header_path': header_path
     })
 
 
@@ -36,7 +58,10 @@ def main_page(request):
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
         'page': page,
-        'settings': settings[0]
+        'settings': settings[0],
+        'favicon_path': favicon_path,
+        'logo_exists': logo_exists,
+        'header_path': header_path
     })
 
 
@@ -47,6 +72,9 @@ def page(request, pk):
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
         'page': page,
-        'settings': settings[0]
+        'settings': settings[0],
+        'favicon_path': favicon_path,
+        'logo_exists': logo_exists,
+        'header_path': header_path
     })
 

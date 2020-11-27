@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
     <link rel="stylesheet" href="{% static 'pages.css' %}">
-    <link href="{% static 'favicon.png' %}" rel="icon" type="image/png"/>
-
+    <link href="{{ favicon_path }}" rel="icon" type="image/png"/>
 </head>
 
 <body>
@@ -17,13 +16,15 @@
 
     <header class="header" style="
     background-color:{{ settings.header_color }};
-    background-image:url({% static 'header.png' %});
+    background-image:url({{ header_path }});
     background-repeat:no-repeat;
     background-size:cover;">
         <font face="Arial, sans-serif">
             <div class="header__body">
                 <a href="/" class="header__logo">
+                    {% if logo_exists %}
                     <img src="{% static 'logo.png' %}" alt="logo">
+                    {% endif %}
                 </a>
                 <a href="#" class="header__burger">
                     <div class="bef" style="background-color:{{ settings.menu_text_color }};"></div>
