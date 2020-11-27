@@ -1,21 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+
 from .models import Page, MenuPage, Settings
-import os.path
-from os import path
-
-PROJECT_PATH = path.realpath(path.dirname(__file__))
-
-favicon_path = "#"
-if os.path.isfile(PROJECT_PATH + "/static/favicon.png"):
-    favicon_path = "static/favicon.png"
-
-logo_path = "#"
-if os.path.isfile(PROJECT_PATH + "/static/logo.png"):
-    logo_path = "static/logo.png"
-
-header_path = "#"
-if os.path.isfile(PROJECT_PATH + "/static/header.png"):
-    header_path = "static/header.png"
 
 
 def menu_page(request, pk):
@@ -29,10 +14,7 @@ def menu_page(request, pk):
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
         'page': page,
-        'settings': settings[0],
-        'favicon_path': favicon_path,
-        'logo_path': logo_path,
-        'header_path': header_path
+        'settings': settings[0]
     })
 
 
@@ -43,10 +25,7 @@ def page_list(request):
     return render(request, 'page_list.html', {
         'menu_pages': menu_pages,
         'pages': pages,
-        'settings': settings[0],
-        'favicon_path': favicon_path,
-        'logo_path': logo_path,
-        'header_path': header_path
+        'settings': settings[0]
     })
 
 
@@ -57,10 +36,7 @@ def main_page(request):
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
         'page': page,
-        'settings': settings[0],
-        'favicon_path': favicon_path,
-        'logo_path': logo_path,
-        'header_path': header_path
+        'settings': settings[0]
     })
 
 
@@ -71,9 +47,6 @@ def page(request, pk):
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
         'page': page,
-        'settings': settings[0],
-        'favicon_path': favicon_path,
-        'logo_path': logo_path,
-        'header_path': header_path
+        'settings': settings[0]
     })
 
