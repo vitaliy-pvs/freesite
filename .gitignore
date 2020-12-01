@@ -10,3 +10,4 @@ pages/static/header.png
 pages/static/logo.png
 media/
 static/
+.env
