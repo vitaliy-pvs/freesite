@@ -7,16 +7,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=yes">
     <link rel="stylesheet" href="{% static 'pages.css' %}">
-    <link href="{{ favicon_path }}" rel="icon" type="image/png"/>
+    {% if favicon_exists %}
+    <link href="{% static 'favicon.png' %}" rel="icon" type="image/png"/>
+    {% endif %}
 </head>
 
 <body>
 
 <div class="wrapper">
 
-    <header class="header" style="
+    <header id="header" class="header" style="
     background-color:{{ settings.header_color }};
-    background-image:url({{ header_path }});
     background-repeat:no-repeat;
     background-size:cover;">
         <font face="Arial, sans-serif">
@@ -62,6 +63,10 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 <script>
 $(document).ready(function(){
+    let is_header = "{{ header_exists }}";
+    if (is_header == "True") {
+        header.style.backgroundImage = "url('{% static 'header.png' %}')";
+    }
     let header__menu = document.getElementById('header__menu');
     let header_color = "{{ settings.header_color }}";
     if (header_color == "#") {

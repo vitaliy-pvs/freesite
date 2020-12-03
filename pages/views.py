@@ -6,17 +6,17 @@ from freesite.settings import STATIC_ROOT
 from .models import Page, MenuPage, Settings
 
 
-favicon_path = "#"
+favicon_exists = False
 if os.path.isfile(os.path.join(STATIC_ROOT, 'favicon.png')):
-    favicon_path = "static/favicon.png"
+    favicon_exists = True
 
 logo_exists = False
 if os.path.isfile(os.path.join(STATIC_ROOT, 'logo.png')):
     logo_exists = True
 
-header_path = "#"
+header_exists = False
 if os.path.isfile(os.path.join(STATIC_ROOT, 'header.png')):
-    header_path = "static/header.png"
+    header_exists = True
 
 
 def menu_page(request, pk):
@@ -31,9 +31,9 @@ def menu_page(request, pk):
         'menu_pages': menu_pages,
         'page': page,
         'settings': settings[0],
-        'favicon_path': favicon_path,
+        'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_path': header_path
+        'header_exists': header_exists
     })
 
 
@@ -45,9 +45,9 @@ def page_list(request):
         'menu_pages': menu_pages,
         'pages': pages,
         'settings': settings[0],
-        'favicon_path': favicon_path,
+        'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_path': header_path
+        'header_exists': header_exists
     })
 
 
@@ -59,9 +59,9 @@ def main_page(request):
         'menu_pages': menu_pages,
         'page': page,
         'settings': settings[0],
-        'favicon_path': favicon_path,
+        'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_path': header_path
+        'header_exists': header_exists
     })
 
 
@@ -73,8 +73,8 @@ def page(request, pk):
         'menu_pages': menu_pages,
         'page': page,
         'settings': settings[0],
-        'favicon_path': favicon_path,
+        'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_path': header_path
+        'header_exists': header_exists
     })
 
