@@ -73,6 +73,7 @@ $(document).ready(function(){
         header_color = "#A9A9A9";
     }
     $('.header__burger').click(function(event){
+        event.preventDefault();
         $('.header__burger, .header__menu, .bef, .mid, .aft').toggleClass('active');
         $('body').toggleClass('lock');
         if (header__menu.classList.contains('active')) {
