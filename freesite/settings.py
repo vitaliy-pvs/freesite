@@ -103,3 +103,23 @@ MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            ['Maximize', 'Undo', 'Redo', 'Link', 'Unlink', 'Anchor', 'Table', 'Image',
+             'NumberedList', 'BulletedList', 'TextColor', 'BGColor', 'Outdent', 'Indent', 'HorizontalRule',
+             'Blockquote', 'Smiley', 'SpecialChar', 'ShowBlocks', 'Preview', 'Source'
+            ],
+            [
+             'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript',
+             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             'Format', 'Font', 'FontSize', 'Styles'
+            ]
+        ],
+        'height': 500,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True
+    }
+}
