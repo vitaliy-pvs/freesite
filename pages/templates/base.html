@@ -33,11 +33,11 @@
         <nav id="header__menu" class="header__menu" style="
         background-color:{{ settings.menu_color }};">
             <div class="menu_wrap">
-                <hr class="br_menu_line" align="left" width="70%" size="1px">
+                <hr class="br_menu_line" style="visibility:hidden;">
                 {% for menu_page in menu_pages %}
                 <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
                    style="color:{{ settings.menu_text_color }};">{{ menu_page.title }}</a><br class="br_menu_line">
-                <hr class="br_menu_line" align="left" width="70%" size="1px">
+                <hr class="br_menu_line" style="visibility:hidden;">
                 {% endfor %}
             </div>
         </nav>
