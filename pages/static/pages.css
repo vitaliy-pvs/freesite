@@ -20,7 +20,7 @@ html, body{
 .header__body{
     position: relative;
     display: flex;
-    height: 110px;
+    height: 90px;
     align-items: center;
     padding: 0px 10px 0px 10px;
     z-index: 1;
@@ -40,33 +40,31 @@ html, body{
     display: none;
 }
 .header__menu{
-    position: absolute;
-    bottom: 0;
+    padding: 5px 0px 5px 0px;
+    position: fixed;
+    max-width: inherit;
+    top: 90px;
     left: 0px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
+    height: 36px;
+    background-color: #808080;
     z-index: 3;
-}
-.header__list{
-    padding: 0;
-    margin: 0;
     display: flex;
-    position: relative;
-    z-index: 3;
+    justify-content: center;
+    align-items: center;
 }
-.header__list li{
-    text-shadow: 0 2px 4px rgba(0, 0, 0, .2);
-    list-style: none;
-    margin: 0px 0px 0px 20px;
+.br_menu_line{
+    display: none;
 }
 .header__link{
     font-size: 16px;
     text-decoration: none;
     color: #FFFFFF;
+    margin: 10px 10px 10px 10px;
 }
 .content{
     width: 100%;
-    padding: 110px 0px 0px 0px;
+    padding: 130px 0px 0px 0px;
     min-height: 100%;
     background-color: #DCDCDC;
 }
@@ -88,8 +86,6 @@ html, body{
         max-height: 40px;
     }
     .header__body{
-        display: flex;
-        justify-content: space-between;
         height: 50px;
     }
     .header_picture{
@@ -97,10 +93,12 @@ html, body{
     }
     .header__burger{
         display: block;
-        position: relative;
+        position: fixed;
+        top: 15px;
+        right: 15px;
         width: 30px;
         height: 20px;
-        z-index: 6;
+        z-index: 3;
     }
     .bef{
         content: '';
@@ -156,16 +154,15 @@ html, body{
         background-color: #808080;
         padding: 10px 10px 20px 10px;
         margin: 0px 0px 0px 0px;
+        display: block;
     }
     .header__menu.active{
         top: 0%;
-        z-index: 5;
+        padding: 40px 0px 0px 0px;
+        z-index: 1;
     }
-    .header__list{
+    .br_menu_line{
         display: block;
-    }
-    .header__list li{
-        margin: 0px 0px 20px 0px;
     }
     .content{
         padding: 50px 0px 0px 0px;

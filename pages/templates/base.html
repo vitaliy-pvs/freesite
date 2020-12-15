@@ -15,48 +15,49 @@
 <body>
 
 <div class="wrapper">
+    <font face="Arial, sans-serif">
 
-    <header id="header" class="header" style="
-    background-color:{{ settings.header_color }};
-    background-repeat:no-repeat;
-    background-size:cover;">
-        <font face="Arial, sans-serif">
+        <header id="header" class="header" style="
+        background-color:{{ settings.header_color }};
+        background-repeat:no-repeat;
+        background-size:cover;">
             <div class="header__body">
                 <a href="/" class="header__logo">
                     {% if logo_exists %}
                     <img src="{% static 'logo.png' %}" alt="logo">
                     {% endif %}
                 </a>
-                <a href="#" class="header__burger">
-                    <div class="bef" style="background-color:{{ settings.menu_text_color }};"></div>
-                    <div class="mid" style="background-color:{{ settings.menu_text_color }};"></div>
-                    <div class="aft" style="background-color:{{ settings.menu_text_color }};"></div>
-                </a>
-                <nav id="header__menu" class="header__menu">
-                    <ul class="header__list">
-                        {% for menu_page in menu_pages %}
-                        <li>
-                            <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
-                               style="color:{{ settings.menu_text_color }};">
-                                {{ menu_page.title }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </nav>
             </div>
-        </font>
-    </header>
+        </header>
 
-    <div class="content" style="background-color:{{ settings.page_color }};">
-        <font color="{{ settings.page_text_color }}" face="Arial, sans-serif">
-            <div class="container">
-                {% block content %}
-                {% endblock %}
+        <nav id="header__menu" class="header__menu" style="
+        background-color:{{ settings.menu_color }};">
+            <div class="menu_wrap">
+                <hr class="br_menu_line" align="left" width="70%" size="1px">
+                {% for menu_page in menu_pages %}
+                <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
+                   style="color:{{ settings.menu_text_color }};">{{ menu_page.title }}</a><br class="br_menu_line">
+                <hr class="br_menu_line" align="left" width="70%" size="1px">
+                {% endfor %}
             </div>
-        </font>
-    </div>
+        </nav>
 
+        <a href="#" class="header__burger">
+            <div class="bef" style="background-color:{{ settings.menu_text_color }};"></div>
+            <div class="mid" style="background-color:{{ settings.menu_text_color }};"></div>
+            <div class="aft" style="background-color:{{ settings.menu_text_color }};"></div>
+        </a>
+
+        <div class="content" style="background-color:{{ settings.page_color }};">
+            <font color="{{ settings.page_text_color }}" face="Arial, sans-serif">
+                <div class="container">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </font>
+        </div>
+
+    </font>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -67,20 +68,10 @@ $(document).ready(function(){
     if (is_header == "True") {
         header.style.backgroundImage = "url('{% static 'header.png' %}')";
     }
-    let header__menu = document.getElementById('header__menu');
-    let header_color = "{{ settings.header_color }}";
-    if (header_color == "#") {
-        header_color = "#A9A9A9";
-    }
     $('.header__burger').click(function(event){
         event.preventDefault();
         $('.header__burger, .header__menu, .bef, .mid, .aft').toggleClass('active');
         $('body').toggleClass('lock');
-        if (header__menu.classList.contains('active')) {
-            header__menu.style.background = header_color;
-        } else {
-            header__menu.style.background = "rgba(0, 0, 0, 0.1)";
-        }
     });
 });
 </script>
