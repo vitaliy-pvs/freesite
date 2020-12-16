@@ -35,9 +35,16 @@
             <div class="menu_wrap">
                 <hr class="br_menu_line" style="visibility:hidden;">
                 {% for menu_page in menu_pages %}
+                {% if menu_page.pk == page.pk %}
+                <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
+                   style="color:{{ settings.menu_text_color }};text-decoration:underline;">{{ menu_page.title }}</a>
+                <br class="br_menu_line">
+                <hr class="br_menu_line" style="visibility:hidden;">
+                {% else %}
                 <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
                    style="color:{{ settings.menu_text_color }};">{{ menu_page.title }}</a><br class="br_menu_line">
                 <hr class="br_menu_line" style="visibility:hidden;">
+                {% endif %}
                 {% endfor %}
             </div>
         </nav>
@@ -74,6 +81,8 @@ $(document).ready(function(){
         $('body').toggleClass('lock');
     });
 });
+
+
 </script>
 
 </body>
