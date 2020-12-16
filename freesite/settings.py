@@ -14,7 +14,6 @@ from pathlib import Path
 from decouple import config
 import os
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
@@ -106,17 +105,30 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': [
-            ['Maximize', 'Undo', 'Redo', 'Link', 'Unlink', 'Anchor', 'Table', 'Image',
-             'NumberedList', 'BulletedList', 'TextColor', 'BGColor', 'Outdent', 'Indent', 'HorizontalRule',
-             'Blockquote', 'Smiley', 'SpecialChar', 'ShowBlocks', 'Preview', 'Source'
-            ],
+        'toolbar':
             [
-             'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript',
-             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
-             'Format', 'Font', 'FontSize', 'Styles'
-            ]
-        ],
+                [
+                    'Maximize',
+                    'Source',
+                    'Save', 'Cut', 'Copy',
+                    'Paste', 'PasteText', 'PasteFromWord',
+                    'Undo', 'Redo',
+                    'Find', 'Replace', 'SelectAll',
+                    'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat',
+                    'NumberedList', 'BulletedList',
+                    'Outdent', 'Indent',
+                    'Blockquote',
+                    'CreateDiv',
+                    'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+                    'BidiLtr', 'BidiRtl',
+                    'Link', 'Unlink', 'Anchor',
+                    'Image', 'Flash', 'Table', 'Iframe',
+                    'HorizontalRule', 'SpecialChar', 'Subscript', 'Superscript',
+                    'TextColor', 'BGColor', 'Smiley',
+                    'ShowBlocks', 'PageBreak', 'Preview',
+                    'Styles', 'Format', 'Font', 'FontSize'
+                ]
+            ],
         'height': 500,
         'width': '100%',
         'toolbarCanCollapse': False,
