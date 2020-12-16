@@ -73,6 +73,7 @@ html, body{
     padding: 130px 0px 0px 0px;
     min-height: 100%;
     background-color: #DCDCDC;
+    box-sizing: border-box;
 }
 .container p img, .container div img{
     width: 100%;
