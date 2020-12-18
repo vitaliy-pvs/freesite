@@ -26,7 +26,7 @@ def menu_page(request, pk):
     if page.title == settings[0].main_page_title:
         return redirect('main_page')
     if page.title == settings[0].page_list_title:
-        return redirect('page_list')
+        return redirect('page_list', pk=pk)
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
         'page': page,
@@ -37,13 +37,15 @@ def menu_page(request, pk):
     })
 
 
-def page_list(request):
+def page_list(request, pk):
     settings = Settings.objects.all()
     menu_pages = MenuPage.objects.order_by('number')
+    page = get_object_or_404(MenuPage, pk=pk)
     pages = Page.objects.all()
     return render(request, 'page_list.html', {
         'menu_pages': menu_pages,
         'pages': pages,
+        'page': page,
         'settings': settings[0],
         'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
