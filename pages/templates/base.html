@@ -35,7 +35,7 @@
             <div class="menu_wrap">
                 <hr class="br_menu_line" style="visibility:hidden;">
                 {% for menu_page in menu_pages %}
-                {% if menu_page.pk == page.pk %}
+                {% if page.number and menu_page.pk == page.pk %}
                 <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
                    style="color:{{ settings.menu_text_color }};text-decoration:underline;">{{ menu_page.title }}</a>
                 <br class="br_menu_line">
@@ -57,7 +57,7 @@
 
         <div class="content" style="background-color:{{ settings.page_color }};">
             <font color="{{ settings.page_text_color }}" face="Arial, sans-serif">
-                <div class="container">
+                <div id="container" class="container">
                     {% block content %}
                     {% endblock %}
                 </div>
@@ -80,6 +80,15 @@ $(document).ready(function(){
         $('.header__burger, .header__menu, .bef, .mid, .aft').toggleClass('active');
         $('body').toggleClass('lock');
     });
+
+    let lin_list = container.querySelectorAll('a');
+    if (lin_list.length > 0) {
+        for (let k = 0; k < lin_list.length; k++) {
+            if (lin_list[k].hasAttribute('name')) {
+                lin_list[k].classList.add('anchor');
+            }
+        }
+    }
 });
 
 
