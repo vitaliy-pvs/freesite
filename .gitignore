@@ -1,8 +1,13 @@
+*.log
+*.pot
 *.pyc
 *~
 __pycache__
+local_settings.py
 db.sqlite3
 .DS_Store
+pip-log.txt
+pip-delete-this-directory.txt
 /.idea/
 /venv/
 /pages/static/favicon.png

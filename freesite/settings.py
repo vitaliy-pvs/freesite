@@ -18,9 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['.pythonanywhere.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -135,3 +135,5 @@ CKEDITOR_CONFIGS = {
         'forcePasteAsPlainText': True
     }
 }
+
+from .local_settings import *
