@@ -136,4 +136,8 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-from .local_settings import *
+
+try:
+    from .local_settings import *
+except ModuleNotFoundError:
+    pass
