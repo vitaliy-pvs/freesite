@@ -106,9 +106,6 @@ a.anchor {
     object-fit: cover;
     box-sizing: border-box;
 }
-#container div{
-    overflow: auto;
-}
 
 @media (max-width: 767px){
     body.lock{
