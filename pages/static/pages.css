@@ -106,7 +106,7 @@ a.anchor {
     object-fit: cover;
     box-sizing: border-box;
 }
-.scroll{
+#container div{
     overflow: auto;
 }
 
