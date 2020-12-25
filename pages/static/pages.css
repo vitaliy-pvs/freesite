@@ -106,6 +106,9 @@ a.anchor {
     object-fit: cover;
     box-sizing: border-box;
 }
+.scroll{
+    overflow: auto;
+}
 
 @media (max-width: 767px){
     body.lock{
