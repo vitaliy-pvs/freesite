@@ -1,3 +1,31 @@
+<!--
+Copyright (c) Vitaliy Prikhodko
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Vitaliy Prikhodko nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL VITALIY PRIKHODKO BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="ru">
@@ -14,37 +42,39 @@
 
 <body>
 
-<div class="wrapper">
+<div id="wrapper">
     <font face="Arial, sans-serif">
 
-        <header id="header" class="header" style="
+        <header id="header" style="
         background-color:{{ settings.header_color }};
         background-repeat:no-repeat;
         background-size:cover;">
-            <div class="header__body">
-                <a href="/" class="header__logo">
+            <div id="header__body">
+                <a href="/" id="header__logo">
                     {% if logo_exists %}
                     <img src="{% static 'logo.png' %}" alt="logo">
                     {% endif %}
                 </a>
                 <div id="back-top">
-                    <a href="#" id="up" style="color:{{ settings.menu_text_color }};border-color:{{ settings.menu_text_color }}">НАВЕРХ</a>
+                    <a href="#" id="up" style="
+                    color:{{ settings.menu_text_color }};
+                    border-color:{{ settings.menu_text_color }}">НАВЕРХ</a>
                 </div>
             </div>
         </header>
 
-        <nav id="header__menu" class="header__menu" style="
+        <nav id="header__menu" style="
         background-color:{{ settings.menu_color }};">
-            <div class="menu_wrap">
+            <div id="menu_wrap">
                 <hr class="br_menu_line" style="visibility:hidden;">
                 {% for menu_page in menu_pages %}
                 {% if page.number and menu_page.pk == page.pk %}
-                <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
+                <a href="{% url 'menu_page' pk=menu_page.pk %}" class="menu_page_link"
                    style="color:{{ settings.menu_text_color }};text-decoration:underline;">{{ menu_page.title }}</a>
                 <br class="br_menu_line">
                 <hr class="br_menu_line" style="visibility:hidden;">
                 {% else %}
-                <a href="{% url 'menu_page' pk=menu_page.pk %}" class="header__link"
+                <a href="{% url 'menu_page' pk=menu_page.pk %}" class="menu_page_link"
                    style="color:{{ settings.menu_text_color }};">{{ menu_page.title }}</a><br class="br_menu_line">
                 <hr class="br_menu_line" style="visibility:hidden;">
                 {% endif %}
@@ -52,13 +82,13 @@
             </div>
         </nav>
 
-        <a href="#" class="header__burger">
-            <div class="bef" style="background-color:{{ settings.menu_text_color }};"></div>
-            <div class="mid" style="background-color:{{ settings.menu_text_color }};"></div>
-            <div class="aft" style="background-color:{{ settings.menu_text_color }};"></div>
+        <a href="#" id="header__burger">
+            <div id="bef" style="background-color:{{ settings.menu_text_color }};"></div>
+            <div id="mid" style="background-color:{{ settings.menu_text_color }};"></div>
+            <div id="aft" style="background-color:{{ settings.menu_text_color }};"></div>
         </a>
 
-        <div class="content" style="background-color:{{ settings.page_color }};">
+        <div id="content" style="background-color:{{ settings.page_color }};">
             <font color="{{ settings.page_text_color }}" face="Arial, sans-serif">
                 <div id="container">
                     {% block content %}
@@ -72,8 +102,8 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    let is_header = "{{ header_exists }}";
-    if (is_header == "True") {
+    let is_header_img = "{{ header_img_exists }}";
+    if (is_header_img == "True") {
         header.style.backgroundImage = "url('{% static 'header.png' %}')";
     }
 
@@ -86,9 +116,9 @@ $(document).ready(function(){
         })
     })(jQuery)
 
-    $('.header__burger').click(function(event){
+    $('#header__burger').click(function(event){
         event.preventDefault();
-        $('.header__burger, .header__menu, .bef, .mid, .aft').toggleClass('active');
+        $('#header__burger, #header__menu, #bef, #mid, #aft').toggleClass('active');
         $('body').toggleClass('lock');
     });
 
@@ -101,6 +131,7 @@ $(document).ready(function(){
         }
     }
 });
+
 </script>
 
 </body>
