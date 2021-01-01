@@ -11,7 +11,7 @@ pip-delete-this-directory.txt
 /.idea/
 /venv/
 /pages/static/favicon.png
-/pages/static/header.png
+/pages/static/header.jpg
 /pages/static/logo.png
 /media/
 /static/

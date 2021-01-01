@@ -43,7 +43,7 @@ if os.path.isfile(os.path.join(STATIC_ROOT, 'logo.png')):
     logo_exists = True
 
 header_img_exists = False
-if os.path.isfile(os.path.join(STATIC_ROOT, 'header.png')):
+if os.path.isfile(os.path.join(STATIC_ROOT, 'header.jpg')):
     header_img_exists = True
 
 

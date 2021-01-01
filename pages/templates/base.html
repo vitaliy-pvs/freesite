@@ -57,8 +57,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </a>
                 <div id="back-top">
                     <a href="#" id="up" style="
-                    color:{{ settings.menu_text_color }};
-                    border-color:{{ settings.menu_text_color }}">НАВЕРХ</a>
+                    color:{{ settings.up_burger_color }};
+                    border-color:{{ settings.up_burger_color }}">НАВЕРХ</a>
                 </div>
             </div>
         </header>
@@ -83,9 +83,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </nav>
 
         <a href="#" id="header__burger">
-            <div id="bef" style="background-color:{{ settings.menu_text_color }};"></div>
-            <div id="mid" style="background-color:{{ settings.menu_text_color }};"></div>
-            <div id="aft" style="background-color:{{ settings.menu_text_color }};"></div>
+            <div id="bef" style="background-color:{{ settings.up_burger_color }};"></div>
+            <div id="mid" style="background-color:{{ settings.up_burger_color }};"></div>
+            <div id="aft" style="background-color:{{ settings.up_burger_color }};"></div>
         </a>
 
         <div id="content" style="background-color:{{ settings.page_color }};">
@@ -104,7 +104,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 $(document).ready(function(){
     let is_header_img = "{{ header_img_exists }}";
     if (is_header_img == "True") {
-        header.style.backgroundImage = "url('{% static 'header.png' %}')";
+        header.style.backgroundImage = "url('{% static 'header.jpg' %}')";
     }
 
     (function($) {
