@@ -120,6 +120,16 @@ $(document).ready(function(){
         event.preventDefault();
         $('#header__burger, #header__menu, #bef, #mid, #aft').toggleClass('active');
         $('body').toggleClass('lock');
+
+        if (bef.classList.contains('active')) {
+            bef.style.backgroundColor = "{{ settings.menu_text_color }}";
+            mid.style.backgroundColor = "{{ settings.menu_text_color }}";
+            aft.style.backgroundColor = "{{ settings.menu_text_color }}";
+        } else {
+            bef.style.backgroundColor = "{{ settings.up_burger_color }}";
+            mid.style.backgroundColor = "{{ settings.up_burger_color }}";
+            aft.style.backgroundColor = "{{ settings.up_burger_color }}";
+        }
     });
 
     let lin_list = container.querySelectorAll('a');
