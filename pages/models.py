@@ -50,7 +50,7 @@ class MenuPage(models.Model):
 class Settings(models.Model):
     site_title = models.TextField(default="#")
     header_color = models.TextField(default="#")
-    up_burger_color = models.TextField(default="#")
+    up_button_color = models.TextField(default="#")
     menu_color = models.TextField(default="#")
     menu_text_color = models.TextField(default="#")
     page_color = models.TextField(default="#")

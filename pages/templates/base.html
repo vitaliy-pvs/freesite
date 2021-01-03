@@ -57,8 +57,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </a>
                 <div id="back-top">
                     <a href="#" id="up" style="
-                    color:{{ settings.up_burger_color }};
-                    border-color:{{ settings.up_burger_color }}">НАВЕРХ</a>
+                    color:{{ settings.up_button_color }};
+                    border-color:{{ settings.up_button_color }}">НАВЕРХ</a>
                 </div>
             </div>
         </header>
@@ -83,9 +83,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </nav>
 
         <a href="#" id="header__burger">
-            <div id="bef" style="background-color:{{ settings.up_burger_color }};"></div>
-            <div id="mid" style="background-color:{{ settings.up_burger_color }};"></div>
-            <div id="aft" style="background-color:{{ settings.up_burger_color }};"></div>
+            <div id="bef" style="background-color:{{ settings.up_button_color }};"></div>
+            <div id="mid" style="background-color:{{ settings.up_button_color }};"></div>
+            <div id="aft" style="background-color:{{ settings.up_button_color }};"></div>
         </a>
 
         <div id="content" style="background-color:{{ settings.page_color }};">
@@ -126,9 +126,9 @@ $(document).ready(function(){
             mid.style.backgroundColor = "{{ settings.menu_text_color }}";
             aft.style.backgroundColor = "{{ settings.menu_text_color }}";
         } else {
-            bef.style.backgroundColor = "{{ settings.up_burger_color }}";
-            mid.style.backgroundColor = "{{ settings.up_burger_color }}";
-            aft.style.backgroundColor = "{{ settings.up_burger_color }}";
+            bef.style.backgroundColor = "{{ settings.up_button_color }}";
+            mid.style.backgroundColor = "{{ settings.up_button_color }}";
+            aft.style.backgroundColor = "{{ settings.up_button_color }}";
         }
     });
 
