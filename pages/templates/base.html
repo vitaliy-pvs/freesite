@@ -105,33 +105,49 @@ $(document).ready(function(){
 
     let status = [];
 
-    console.log("ЗНАЧЕНИЯ НАСТРОЕК САЙТА:");
+    console.log("НАСТРОЙКИ 'Settings':");
 
-    console.log("1) Site title: {{ settings.site_title }}");
+    console.log("1) Site title: '{{ settings.site_title }}'");
 
     status = pageStatus("{{ settings.main_page_title }}");
-    console.log("%c2) Main page title: {{ settings.main_page_title }} (" + status[0] + ")", status[1]);
+    console.log("%c2) Main page title: '{{ settings.main_page_title }}' (" + status[0] + " '{{ settings.main_page_title }}')", status[1]);
 
     status = pageStatus("{{ settings.page_list_title }}");
-    console.log("%c3) Page list title: {{ settings.page_list_title }} (" + status[0] + ")", status[1]);
+    console.log("%c3) Page list title: '{{ settings.page_list_title }}' (" + status[0] + " '{{ settings.page_list_title }}')", status[1]);
 
     status = colorStatus("{{ settings.header_color }}");
-    console.log("%c4) Header color: {{ settings.header_color }} (" + status[0] + ")", status[1]);
+    console.log("%c4) Header color: '{{ settings.header_color }}' (" + status[0] + ")", status[1]);
 
     status = colorStatus("{{ settings.up_button_color }}");
-    console.log("%c5) Up button color: {{ settings.up_button_color }} (" + status[0] + ")", status[1]);
+    console.log("%c5) Up button color: '{{ settings.up_button_color }}' (" + status[0] + ")", status[1]);
 
     status = colorStatus("{{ settings.menu_color }}");
-    console.log("%c6) Menu color: {{ settings.menu_color }} (" + status[0] + ")", status[1]);
+    console.log("%c6) Menu color: '{{ settings.menu_color }}' (" + status[0] + ")", status[1]);
 
     status = colorStatus("{{ settings.menu_text_color }}");
-    console.log("%c7) Menu text color: {{ settings.menu_text_color }} (" + status[0] + ")", status[1]);
+    console.log("%c7) Menu text color: '{{ settings.menu_text_color }}' (" + status[0] + ")", status[1]);
 
     status = colorStatus("{{ settings.page_color }}");
-    console.log("%c8) Page color: {{ settings.page_color }} (" + status[0] + ")", status[1]);
+    console.log("%c8) Page color: '{{ settings.page_color }}' (" + status[0] + ")", status[1]);
 
     status = colorStatus("{{ settings.page_text_color }}");
-    console.log("%c9) Page text color: {{ settings.page_text_color }} (" + status[0] + ")", status[1]);
+    console.log("%c9) Page text color: '{{ settings.page_text_color }}' (" + status[0] + ")", status[1]);
+
+    status = loadStatus("{{ header_img_exists }}");
+    console.log("%c10) Файл 'header.jpg' " + status[0], status[1]);
+
+    status = loadStatus("{{ logo_exists }}");
+    console.log("%c11) Файл 'logo.png' " + status[0], status[1]);
+
+    status = loadStatus("{{ favicon_exists }}");
+    console.log("%c12) Файл 'favicon.png' " + status[0], status[1]);
+
+    function loadStatus(is_img) {
+        if (is_img == "True") {
+            return ["загружен в '{{ STATIC_ROOT }}'", ''];
+        }
+        return ["НЕ загружен в '{{ STATIC_ROOT }}'", 'color: red;'];
+    }
 
     function pageStatus(page_title) {
         str_arr = ["&gt;", "&lt;", "QuerySet", ",", "]", "["];
@@ -142,10 +158,10 @@ $(document).ready(function(){
         let title_arr = menu_pages.split("MenuPage:");
         for (let n = 0; n < title_arr.length; n++) {
             if (title_arr[n].trim() == page_title) {
-                return ['есть подключение страницы', ''];
+                return ['есть страница Menu page', ''];
             }
         }
-        return ['нет подключения страницы', 'color: red;'];
+        return ['нет страницы Menu page', 'color: red;'];
     }
 
     function isColor(color) {
@@ -160,10 +176,9 @@ $(document).ready(function(){
 
     function colorStatus(hex_color) {
         if (isColor(hex_color)) {
-            return ['цвет задан администратором', ''];
-        } else {
-            return ['некорректный код цвета, применен цвет по умолчанию', 'color: red;'];
+            return ['корректный код цвета в настройках', ''];
         }
+        return ['некорректный код цвета в настройках, применен цвет по умолчанию', 'color: red;'];
     }
 
 

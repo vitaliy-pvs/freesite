@@ -61,7 +61,8 @@ def menu_page(request, pk):
         'settings': settings[0],
         'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_img_exists': header_img_exists
+        'header_img_exists': header_img_exists,
+        'STATIC_ROOT': STATIC_ROOT
     })
 
 
@@ -77,7 +78,8 @@ def page_list(request, pk):
         'settings': settings[0],
         'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_img_exists': header_img_exists
+        'header_img_exists': header_img_exists,
+        'STATIC_ROOT': STATIC_ROOT
     })
 
 
@@ -91,7 +93,8 @@ def main_page(request):
         'settings': settings[0],
         'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_img_exists': header_img_exists
+        'header_img_exists': header_img_exists,
+        'STATIC_ROOT': STATIC_ROOT
     })
 
 
@@ -105,6 +108,7 @@ def page(request, pk):
         'settings': settings[0],
         'favicon_exists': favicon_exists,
         'logo_exists': logo_exists,
-        'header_img_exists': header_img_exists
+        'header_img_exists': header_img_exists,
+        'STATIC_ROOT': STATIC_ROOT
     })
 
