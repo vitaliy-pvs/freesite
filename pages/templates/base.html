@@ -103,13 +103,76 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <script type="text/javascript">
 $(document).ready(function(){
 
+    let status = [];
+
+    console.log("ЗНАЧЕНИЯ НАСТРОЕК САЙТА:");
+
+    console.log("1) Site title: {{ settings.site_title }}");
+
+    status = pageStatus("{{ settings.main_page_title }}");
+    console.log("%c2) Main page title: {{ settings.main_page_title }} (" + status[0] + ")", status[1]);
+
+    status = pageStatus("{{ settings.page_list_title }}");
+    console.log("%c3) Page list title: {{ settings.page_list_title }} (" + status[0] + ")", status[1]);
+
+    status = colorStatus("{{ settings.header_color }}");
+    console.log("%c4) Header color: {{ settings.header_color }} (" + status[0] + ")", status[1]);
+
+    status = colorStatus("{{ settings.up_button_color }}");
+    console.log("%c5) Up button color: {{ settings.up_button_color }} (" + status[0] + ")", status[1]);
+
+    status = colorStatus("{{ settings.menu_color }}");
+    console.log("%c6) Menu color: {{ settings.menu_color }} (" + status[0] + ")", status[1]);
+
+    status = colorStatus("{{ settings.menu_text_color }}");
+    console.log("%c7) Menu text color: {{ settings.menu_text_color }} (" + status[0] + ")", status[1]);
+
+    status = colorStatus("{{ settings.page_color }}");
+    console.log("%c8) Page color: {{ settings.page_color }} (" + status[0] + ")", status[1]);
+
+    status = colorStatus("{{ settings.page_text_color }}");
+    console.log("%c9) Page text color: {{ settings.page_text_color }} (" + status[0] + ")", status[1]);
+
+    function pageStatus(page_title) {
+        str_arr = ["&gt;", "&lt;", "QuerySet", ",", "]", "["];
+        menu_pages = "{{ menu_pages }}";
+        for (let i = 0; i < str_arr.length; i++) {
+            menu_pages = menu_pages.split(str_arr[i]).join("");
+        }
+        let title_arr = menu_pages.split("MenuPage:");
+        for (let n = 0; n < title_arr.length; n++) {
+            if (title_arr[n].trim() == page_title) {
+                return ['есть подключение страницы', ''];
+            }
+        }
+        return ['нет подключения страницы', 'color: red;'];
+    }
+
+    function isColor(color) {
+        let color_low = color.toLowerCase();
+        pattern_HEX = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i;
+        pattern_RGBA = /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/;
+        if (pattern_HEX.test(color_low) || pattern_RGBA.test(color_low)) {
+            return true;
+        }
+        return false;
+    }
+
+    function colorStatus(hex_color) {
+        if (isColor(hex_color)) {
+            return ['цвет задан администратором', ''];
+        } else {
+            return ['некорректный код цвета, применен цвет по умолчанию', 'color: red;'];
+        }
+    }
+
+
     let is_header_img = "{{ header_img_exists }}";
     const mediaQuery = window.matchMedia('(min-width: 768px)');
-    colorPattern = /#[a-f0-9]{6}\b/gi;
 
     if (is_header_img == "True") {
         let header_color = "{{ settings.header_color }}";
-        if (!(colorPattern.test(header_color))){
+        if (!(isColor(header_color))){
             header.style.backgroundImage = "url('{% static 'header.jpg' %}')";
         } else {
             function handleTabletChange(e) {
@@ -139,13 +202,25 @@ $(document).ready(function(){
         $('body').toggleClass('lock');
 
         if (bef.classList.contains('active')) {
-            bef.style.backgroundColor = "{{ settings.menu_text_color }}";
-            mid.style.backgroundColor = "{{ settings.menu_text_color }}";
-            aft.style.backgroundColor = "{{ settings.menu_text_color }}";
+            if (isColor("{{ settings.menu_text_color }}")) {
+                bef.style.backgroundColor = "{{ settings.menu_text_color }}";
+                mid.style.backgroundColor = "{{ settings.menu_text_color }}";
+                aft.style.backgroundColor = "{{ settings.menu_text_color }}";
+            } else {
+                bef.style.backgroundColor = "#FFFFFF";
+                mid.style.backgroundColor = "#FFFFFF";
+                aft.style.backgroundColor = "#FFFFFF";
+            }
         } else {
-            bef.style.backgroundColor = "{{ settings.up_button_color }}";
-            mid.style.backgroundColor = "{{ settings.up_button_color }}";
-            aft.style.backgroundColor = "{{ settings.up_button_color }}";
+            if (isColor("{{ settings.up_button_color }}")) {
+                bef.style.backgroundColor = "{{ settings.up_button_color }}";
+                mid.style.backgroundColor = "{{ settings.up_button_color }}";
+                aft.style.backgroundColor = "{{ settings.up_button_color }}";
+            } else {
+                bef.style.backgroundColor = "#FFFFFF";
+                mid.style.backgroundColor = "#FFFFFF";
+                aft.style.backgroundColor = "#FFFFFF";
+            }
         }
     });
 
