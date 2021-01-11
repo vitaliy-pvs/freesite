@@ -48,10 +48,12 @@ header_img_exists = False
 if os.path.isfile(os.path.join(STATIC_ROOT, 'header.jpg')):
     header_img_exists = True
 
+settings = Settings.objects.all()
+menu_pages = MenuPage.objects.order_by('number')
+pages = Page.objects.all()
+
 
 def menu_page(request, pk):
-    settings = Settings.objects.all()
-    menu_pages = MenuPage.objects.order_by('number')
     page = get_object_or_404(MenuPage, pk=pk)
     if page.title == settings[0].main_page_title:
         return redirect('main_page')
@@ -69,10 +71,7 @@ def menu_page(request, pk):
 
 
 def page_list(request, pk):
-    settings = Settings.objects.all()
-    menu_pages = MenuPage.objects.order_by('number')
     page = get_object_or_404(MenuPage, pk=pk)
-    pages = Page.objects.all()
     return render(request, 'page_list.html', {
         'menu_pages': menu_pages,
         'pages': pages,
@@ -86,8 +85,6 @@ def page_list(request, pk):
 
 
 def main_page(request):
-    settings = Settings.objects.all()
-    menu_pages = MenuPage.objects.order_by('number')
     page = get_object_or_404(MenuPage, title=settings[0].main_page_title)
     return render(request, 'page.html', {
         'menu_pages': menu_pages,
@@ -101,8 +98,6 @@ def main_page(request):
 
 
 def page(request, pk):
-    settings = Settings.objects.all()
-    menu_pages = MenuPage.objects.order_by('number')
     page = get_object_or_404(Page, pk=pk)
     return render(request, 'page.html', {
         'menu_pages': menu_pages,

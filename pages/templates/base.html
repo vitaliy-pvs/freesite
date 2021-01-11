@@ -133,14 +133,16 @@ $(document).ready(function(){
     status = colorStatus("{{ settings.page_text_color }}");
     console.log("%c9) Page text color: '{{ settings.page_text_color }}' (" + status[0] + ")", status[1]);
 
+    console.log("10) Page text max width: {{ settings.page_text_max_width }}px");
+
     status = loadStatus("{{ header_img_exists }}");
-    console.log("%c10) Файл 'header.jpg' " + status[0], status[1]);
+    console.log("%c11) Файл 'header.jpg' " + status[0], status[1]);
 
     status = loadStatus("{{ logo_exists }}");
-    console.log("%c11) Файл 'logo.png' " + status[0], status[1]);
+    console.log("%c12) Файл 'logo.png' " + status[0], status[1]);
 
     status = loadStatus("{{ favicon_exists }}");
-    console.log("%c12) Файл 'favicon.png' " + status[0], status[1]);
+    console.log("%c13) Файл 'favicon.png' " + status[0], status[1]);
 
     function loadStatus(is_img) {
         if (is_img == "True") {
@@ -246,6 +248,11 @@ $(document).ready(function(){
                 lin_list[k].classList.add('anchor');
             }
         }
+    }
+
+    let page_text_max_width = Number("{{ settings.page_text_max_width }}");
+    if (page_text_max_width > 300) {
+       container.style.maxWidth = "{{ settings.page_text_max_width }}px";
     }
 });
 

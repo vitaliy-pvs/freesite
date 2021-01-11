@@ -57,3 +57,4 @@ class Settings(models.Model):
     menu_text_color = models.TextField(default="#")
     page_color = models.TextField(default="#")
     page_text_color = models.TextField(default="#")
+    page_text_max_width = models.IntegerField(default=1024)
