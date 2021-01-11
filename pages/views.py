@@ -34,6 +34,8 @@ from freesite.settings import STATIC_ROOT
 from .models import Page, MenuPage, Settings
 
 
+STATIC_ROOT = STATIC_ROOT.replace("\\", "/")
+
 favicon_exists = False
 if os.path.isfile(os.path.join(STATIC_ROOT, 'favicon.png')):
     favicon_exists = True
