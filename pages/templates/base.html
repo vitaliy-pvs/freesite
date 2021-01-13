@@ -185,7 +185,7 @@ $(document).ready(function(){
 
 
     let is_header_img = "{{ header_img_exists }}";
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
 
     if (is_header_img == "True") {
         let header_color = "{{ settings.header_color }}";
@@ -193,7 +193,7 @@ $(document).ready(function(){
             header.style.backgroundImage = "url('{% static 'header.jpg' %}')";
         } else {
             function handleTabletChange(e) {
-                if (e.matches) {
+                if (!e.matches) {
                     header.style.backgroundImage = "url('{% static 'header.jpg' %}')";
                 } else {
                     header.style.backgroundImage = 'none';
