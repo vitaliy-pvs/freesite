@@ -160,10 +160,10 @@ $(document).ready(function(){
         let title_arr = menu_pages.split("MenuPage:");
         for (let n = 0; n < title_arr.length; n++) {
             if (title_arr[n].trim() == page_title) {
-                return ['есть страница Menu page', ''];
+                return ['есть страница', ''];
             }
         }
-        return ['нет страницы Menu page', 'color: red;'];
+        return ['нет страницы', 'color: red;'];
     }
 
     function isColor(color) {
